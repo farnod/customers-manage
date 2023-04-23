@@ -17,7 +17,11 @@ function ItemList({ form, setForm }) {
     newProducts[index][name] = value;
     setForm({ ...form, products: newProducts });
   };
-	const deleteHandler = ()=>{};
+  const deleteHandler = (index) => {
+    const newProducts = [...products];
+    newProducts.splice(index, 1);
+    setForm({ ...form, products: newProducts });
+  };
 
 	return (
 		<div className="item-list">
