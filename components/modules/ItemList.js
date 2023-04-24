@@ -11,7 +11,12 @@ function ItemList({ form, setForm }) {
 		console.log(products);
 	};
 
-	const changeHandler = ()=>{};
+	const changeHandler = (e, index) => {
+    const { name, value } = e.target;
+    const newProducts = [...products];
+    newProducts[index][name] = value;
+    setForm({ ...form, products: newProducts });
+  };
 	const deleteHandler = ()=>{};
 
 	return (
@@ -24,7 +29,7 @@ function ItemList({ form, setForm }) {
 						label="Product Name"
 						type="text"
 						value={product.name}
-						onChange={changeHandler}
+						onChange={(e)=>changeHandler(e,index)}
 					/>
 					<div>
 					<FormInput
@@ -32,14 +37,14 @@ function ItemList({ form, setForm }) {
 						label="Price"
 						type="text"
 						value={product.price}
-						onChange={changeHandler}
+						onChange={(e)=>changeHandler(e,index)}
 					/>
 					<FormInput
 						name="qty"
 						label="Qty"
 						type="number"
 						value={product.qty}
-						onChange={changeHandler}
+						onChange={(e)=>changeHandler(e,index)}
 					/>
 					</div>
 					<button onClick={deleteHandler}>Remove</button>
